@@ -9,11 +9,11 @@ class Individual:
         self.chromosome = chromossome
         self.fitness = None
 
-    def set_cromossom(self, cromossom: Chromosome) -> None:
+    def set_chromosome(self, chromossome: Chromosome) -> None:
 
-        self.chromosome = cromossom
+        self.chromosome = chromossome
 
-    def get_cromossom(self) -> Chromosome:
+    def get_chromosome(self) -> Chromosome:
 
         return self.chromosome
 
@@ -27,10 +27,10 @@ class Individual:
 
     # str and repr for this individual
     def __str__(self):
-        return f"Cromossom: {self.chromosome} | Fitness: {self.fitness}"
+        return f"Chromosome: {self.chromosome} | Fitness: {self.fitness}"
 
     def __repr__(self):
-        return f"Cromossom: {self.chromosome} | Fitness: {self.fitness}"
+        return f"Chromosome: {self.chromosome} | Fitness: {self.fitness}"
 
     def __eq__(self, other):
         if not isinstance(other, Individual):

@@ -31,11 +31,11 @@ class Chromosome:
 
         self.genes.pop(index)
 
-    def get_cromossom_size(self) -> int:
+    def get_chromosome_size(self) -> int:
 
         return len(self.genes)
 
-    # str and repr for this cromossom
+    # str and repr for this chromosome
     def __str__(self):
         return f"Genes: {self.genes}"
 

@@ -1,68 +1,7 @@
-from abc import ABC, abstractmethod
 import numpy as np
 from .chromosome import Chromosome
-from .gene import Gene
-from .individual import Individual
-from .mutations import Mutation, UniformMutation
-from .population import Population
+from .base import Problem
 
-
-class Problem(ABC):
-
-    @abstractmethod
-    def __init__(
-        self,
-        genes_boundries: tuple = None,
-        mutation=None,
-        initial_state: Population = None,
-    ):
-
-        self.genes_boundries = genes_boundries
-        self.initial_state = initial_state
-
-        # Mutation operator
-        if mutation is None:
-            self.mutation = UniformMutation(mutation_rate=1)  # Standard mutation method
-        else:
-            if not isinstance(mutation, Mutation):
-                raise TypeError(
-                    "Mutation operator must be an instance of Mutation or None"
-                )
-            else:
-                self.mutation = mutation
-
-        super().__init__()
-
-    @abstractmethod
-    def calculate_fitness(self, chromossome: Chromosome, *args, **kwargs):
-
-        raise NotImplementedError("Subclass must implement the mutate method.")
-
-    def generate_first_population(self, population_size):
-
-        if self.initial_state is None:
-            return self.generate_random_population(population_size)
-        else:
-            return self.initial_state
-
-    def generate_random_population(self, population_size):
-        population_list = []
-        for i in range(population_size):
-            # Create a cromossom with random genes
-            cromossom = Chromosome(
-                [
-                    Gene(
-                        low_boundry=boundary[0],
-                        high_boundry=boundary[1]
-                    )
-                    for boundary in self.genes_boundries
-                ]
-            )
-            # Create individual with cromossom
-            individual = Individual(cromossom)
-            # Add individual to population
-            population_list.append(individual)
-        return Population(population_list)
 
 
 class AckleyProblem(Problem):

@@ -1,36 +1,9 @@
 from .individual import Individual
 from .gene import Gene
-from abc import ABC, abstractmethod
+from .base import Mutation
 import numpy as np
 
 
-# TODO: Implementing mutation as an class for each gene
-
-
-# ---------------------------------------------------------------------------------------------------
-class Mutation(ABC):
-
-    @abstractmethod
-    def __init__(self, mutation_rate):
-        self.mutation_rate = mutation_rate 
-
-    @abstractmethod
-    def mutate(
-        self,
-        value: any,
-        high_boundry: any,
-        low_boundry: any,
-        *args,
-        **kwargs
-    ):
-        
-        raise NotImplementedError("Subclass must implement the mutate method.")
-
-
-# ---------------------------------------------------------------------------------------------------
-
-
-# ---------------------------------------------------------------------------------------------------
 class UniformMutation(Mutation):
 
     def __init__(self, mutation_rate, mutation_value):
@@ -44,10 +17,10 @@ class UniformMutation(Mutation):
         **kwargs
     ):
         
-        for gene in individual.get_cromossom().get_genes():
+        for gene in individual.get_chromosome().get_genes():
             gene.value = self.calculate_new_value(gene)
 
-        return individual.get_cromossom()
+        return individual.get_chromosome()
     
     def calculate_new_value(self, gene: Gene):
 
