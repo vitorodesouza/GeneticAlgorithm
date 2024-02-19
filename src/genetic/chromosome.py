@@ -1,4 +1,4 @@
-from genetic.genetic.gene import Gene
+from .gene import Gene
 
 
 class Chromosome:

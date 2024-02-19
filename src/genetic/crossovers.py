@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
-from genetic.genetic.individual import Individual
-from genetic.genetic.chromosome import Chromosome
-from genetic.genetic.gene import Gene
+from .individual import Individual
+from .chromosome import Chromosome
+from .gene import Gene
 from statistics import mean
 import numpy as np
 
@@ -69,8 +69,7 @@ class ArithimeticCrossover(Crossover):
             Gene(
                 low_boundry=parent1.get_cromossom().get_gene(i).get_boundries()[0],
                 high_boundry=parent1.get_cromossom().get_gene(i).get_boundries()[1],
-                value=child_genes_values[i],
-                mutation=parent1.get_cromossom().get_gene(i).mutation,
+                value=child_genes_values[i]
             )
             for i in range(len(child_genes_values))
         ]

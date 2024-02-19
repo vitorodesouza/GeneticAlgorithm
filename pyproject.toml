@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "genetic"
+version = "0.1.0"
+dependencies = [
+    "numpy >= 1.26.4 , < 2.0.0",
+    "pandas >= 2.2.0 , < 3.0.0",
+    "matplotlib >= 3.8.0 , < 4.0.0"
+]
+requires-python = ">3.0"
+authors = [
+    {name = "Vitor Oliveira de Souza", email = "vitor.odesouza@gmail.com.com"},
+]
+maintainers = [
+    {name = "Vitor Oliveira de Souza", email = "vitor.odesouza@gmail.com.com"}
+]
+description = "A Python package for genetic algorithms."
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+keywords = ["genetic", "algorithm", "optimization"]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+dev = ["black"]
+
+[project.urls]
+Homepage = "https://github.com/vitorodesouza/GeneticAlgorithm"
+"Bug Tracker" = "https://github.com/vitorodesouza/GeneticAlgorithm/issues"

@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 import numpy as np
-from genetic.genetic.chromosome import Chromosome
-from genetic.genetic.gene import Gene
-from genetic.genetic.individual import Individual
-from genetic.genetic.mutations import Mutation, UniformMutation
-from genetic.genetic.population import Population
+from .chromosome import Chromosome
+from .gene import Gene
+from .individual import Individual
+from .mutations import Mutation, UniformMutation
+from .population import Population
 
 
 class Problem(ABC):
@@ -34,7 +34,7 @@ class Problem(ABC):
         super().__init__()
 
     @abstractmethod
-    def calculate_fitness(self, genes, *args, **kwargs):
+    def calculate_fitness(self, chromossome: Chromosome, *args, **kwargs):
 
         raise NotImplementedError("Subclass must implement the mutate method.")
 
@@ -53,8 +53,7 @@ class Problem(ABC):
                 [
                     Gene(
                         low_boundry=boundary[0],
-                        high_boundry=boundary[1],
-                        mutation=self.mutation,
+                        high_boundry=boundary[1]
                     )
                     for boundary in self.genes_boundries
                 ]
@@ -76,7 +75,8 @@ class AckleyProblem(Problem):
             initial_state=initial_state,
         )
 
-    def calculate_fitness(self, genes, *args, **kwargs):
+    def calculate_fitness(self, chromosome: Chromosome, *args, **kwargs):
+        genes = chromosome.get_genes()
         gene_values = np.array([gene.get_value() for gene in genes])
         return -(
             -20 * np.exp(-0.2 * np.sqrt(np.mean(gene_values**2)))
@@ -96,5 +96,6 @@ class MaxZero(Problem):
             initial_state=initial_state,
         )
 
-    def calculate_fitness(self, genes, *args, **kwargs):
+    def calculate_fitness(self, chromosome: Chromosome, *args, **kwargs):
+        genes = chromosome.get_genes()
         return sum(1 for gene in genes if gene.value == 0)

@@ -1,5 +1,4 @@
 import numpy as np
-from genetic.genetic.mutations import Mutation, UniformMutation
 
 
 # ---------------------------------------------------------------------------------------------------
@@ -9,24 +8,11 @@ class Gene:
         self,
         low_boundry: float,
         high_boundry: float,
-        value: float = None,
-        mutation: Mutation = None,
+        value = None
     ):
 
         self.low_boundry = low_boundry
         self.high_boundry = high_boundry
-
-        # Mutation operator
-        if mutation is None:
-            self.mutation = UniformMutation(mutation_rate=1)  # Standard mutation method
-        else:
-            if not isinstance(mutation, Mutation):
-                print("Mutation type: ", type(mutation))
-                raise TypeError(
-                    "Mutation operator must be an instance of Mutation or None"
-                )
-            else:
-                self.mutation = mutation
 
         if value is not None:
             self.value = value
@@ -36,14 +22,6 @@ class Gene:
     def generate_gene(self):
 
         return np.random.uniform(self.low_boundry, self.high_boundry)
-
-    def mutate(self) -> None:
-
-        self.value = self.mutation.mutate(
-            value=self.value,
-            high_boundry=self.high_boundry,
-            low_boundry=self.low_boundry
-        )
 
     def get_value(self):
 

@@ -1,10 +1,9 @@
 from abc import ABC, abstractmethod
-from genetic.genetic.population import Population
-from genetic.genetic.individual import Individual
+from .population import Population
+from .individual import Individual
 import numpy as np
 
 
-# ---------------------------------------------------------------------------------------------------
 class Selection(ABC):
 
     @abstractmethod
@@ -17,33 +16,18 @@ class Selection(ABC):
     ) -> list[Individual]:
         raise NotImplementedError("Subclass must implement the mutate method.")
 
-
-# ---------------------------------------------------------------------------------------------------
-
-
-# ---------------------------------------------------------------------------------------------------
 class TournamentSelection(Selection):
     def __init__(self, tournament_size):
         pass
 
     # TODO
 
-
-# ---------------------------------------------------------------------------------------------------
-
-
-# ---------------------------------------------------------------------------------------------------
 class RankSelection(Selection):
     def __init__(self):
         pass
 
     # TODO
 
-
-# ---------------------------------------------------------------------------------------------------
-
-
-# ---------------------------------------------------------------------------------------------------
 class RandomSelection(Selection):
     def __init__(self):
         pass
@@ -62,11 +46,6 @@ class RandomSelection(Selection):
             )
         return selected_individuals
 
-
-# ---------------------------------------------------------------------------------------------------
-
-
-# ---------------------------------------------------------------------------------------------------
 class RouletteSelection(Selection):
 
     def __init__(self):
@@ -99,6 +78,7 @@ class RouletteSelection(Selection):
 
                 if draw <= accumulated:
                     selected_individuals.append(individual)
+                    break
 
         if len(selected_individuals) < num_select:
             print(
@@ -114,7 +94,5 @@ class RouletteSelection(Selection):
                     ]
                 )
 
-        return selected_individuals
+        return selected_individuals#[selected_individuals[i] for i in range(num_select)]
 
-
-# ---------------------------------------------------------------------------------------------------

@@ -1,9 +1,9 @@
-from src.genetic.genetic import Genetic
-from src.genetic.crossovers import ArithimeticCrossover
-from src.genetic.mutations import UniformMutation
-from src.genetic.selections import RouletteSelection
-from src.genetic.problems import AckleyProblem
-from src.genetic.utils.utils import plot_history
+from .genetic import Genetic
+from .crossovers import ArithimeticCrossover
+from .mutations import UniformMutation
+from .selections import RouletteSelection
+from .problems import AckleyProblem
+from .utils.utils import plot_history
 
 if __name__ == "__main__":
 

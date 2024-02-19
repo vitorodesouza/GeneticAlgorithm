@@ -1,10 +1,7 @@
-from genetic.genetic.population import Population
-from genetic.genetic.crossovers import Crossover
-from genetic.genetic.problems import Problem
-from genetic.genetic.selections import Selection
-from genetic.genetic.chromosome import Chromosome
-from genetic.genetic.gene import Gene
-from genetic.genetic.individual import Individual
+from .population import Population
+from .crossovers import Crossover
+from .problems import Problem
+from .selections import Selection
 
 
 class Genetic:
@@ -74,11 +71,7 @@ class Genetic:
 
             # Calculate fitness values for each individual
             for individual in self.population.get_individuals():
-                individual.set_fitness(
-                    self.problem.calculate_fitness(
-                        individual.get_cromossom().get_genes()
-                    )
-                )
+                individual.set_fitness(self.problem)
             # Get best individual from new generation
             best_individuals_history.append(self.population.get_best_individual())
             # Create next generation
@@ -94,6 +87,7 @@ class Genetic:
         population_size = len(population.get_individuals())
         # Get list of individuals sorted by fitness in ascending order
         population.sort_individuals_by_fitness()
+        new_population = population
 
         for i in range(population_size):
 
@@ -102,23 +96,21 @@ class Genetic:
             # Creates a new individual by crossing the two selected individuals
             individual = self.crossover.crossover(parents[0], parents[1])
             # Mutates the new individual genes
-            for gene in individual.get_cromossom().get_genes():
-                gene.mutate()
+            individual.chromosome = self.problem.mutation.mutate(individual)
 
             # Calculate fitness for the new individual
-            individual.set_fitness(
-                self.problem.calculate_fitness(individual.get_cromossom().get_genes())
-            )
+            individual.set_fitness(self.problem)
+
             # Add the new individual to the new generation if new individual is
             # better than the worst individual in the previous generation
             if (
                 individual.get_fitness()
                 > population.get_worst_individual().get_fitness()
             ):
-                population.set_individual(0, individual)
+                new_population.individuals[0] = individual
 
         # Return a list with new individuals (next generation)
-        return population
+        return new_population
 
     def sort_population_by_fitness(self, population: Population):
         return sorted(

@@ -1,3 +1,25 @@
+Metadata-Version: 2.1
+Name: genetic
+Version: 0.1.0
+Summary: A Python package for genetic algorithms.
+Author-email: Vitor Oliveira de Souza <vitor.odesouza@gmail.com.com>
+Maintainer-email: Vitor Oliveira de Souza <vitor.odesouza@gmail.com.com>
+Project-URL: Homepage, https://github.com/vitorodesouza/GeneticAlgorithm
+Project-URL: Bug Tracker, https://github.com/vitorodesouza/GeneticAlgorithm/issues
+Keywords: genetic,algorithm,optimization
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >3.0
+Description-Content-Type: text/markdown
+License-File: LICENCE.txt
+Requires-Dist: numpy<2.0.0,>=1.26.4
+Requires-Dist: pandas<3.0.0,>=2.2.0
+Requires-Dist: matplotlib<4.0.0,>=3.8.0
+Provides-Extra: dev
+Requires-Dist: black; extra == "dev"
+
 # Genetic Algorithm Framework
 ## Description
 This project is a Python-based genetic algorithm framework designed to solve optimization problems. It implements various genetic algorithm components such as selection, crossover, mutation, and fitness evaluation strategies. The framework is flexible, allowing for easy adaptation to a wide range of optimization problems, such as the Ackley function optimization and maximizing zeroes in a binary string.

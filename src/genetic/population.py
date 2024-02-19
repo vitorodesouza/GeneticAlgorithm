@@ -1,4 +1,4 @@
-from genetic.genetic.individual import Individual
+from .individual import Individual
 
 
 class Population:
