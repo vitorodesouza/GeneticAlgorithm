@@ -3,6 +3,7 @@ README.md
 pyproject.toml
 src/genetic/__init__.py
 src/genetic/__main__.py
+src/genetic/base.py
 src/genetic/chromosome.py
 src/genetic/crossovers.py
 src/genetic/gene.py

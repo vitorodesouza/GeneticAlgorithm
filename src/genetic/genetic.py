@@ -1,7 +1,9 @@
+from .mutations import Mutation
 from .population import Population
 from .crossovers import Crossover
 from .problems import Problem
 from .selections import Selection
+from .population_generator import PopulationGenerator
 
 
 class Genetic:
@@ -14,6 +16,9 @@ class Genetic:
         crossover,
         problem,
         selection,
+        mutation,
+        p_generator: PopulationGenerator = None,
+        initial_state: Population = None,
         verbose: int = 0,
         **kwargs
     ):
@@ -49,12 +54,27 @@ class Genetic:
         else:
             self.selection = selection
 
+        if not isinstance(mutation, Mutation):
+            raise TypeError("mutation must be an instance of Mutation")
+        else:
+            self.mutation = mutation
+
         # Initialize first generation
-        if self.verbose > 0:
-            print("Generating first population")
-        self.population = self.problem.generate_first_population(
-            population_size=self.population_size
-        )
+        if initial_state is not None:
+            self.population = initial_state
+        else:
+            if p_generator is not None:
+                # Use provided population generator
+                if self.verbose > 0:
+                    print("Generating first population")
+                self.population = p_generator.generate(population_size=self.population_size)
+            else:
+                # Use standard pop generator
+                if self.verbose > 0:
+                    print("Generating first population")
+                self.population = PopulationGenerator(problem=self.problem).generate(
+                    population_size=self.population_size
+                )
 
         if verbose > 0:
             print("Genetic algorithm initialized")
@@ -96,7 +116,7 @@ class Genetic:
             # Creates a new individual by crossing the two selected individuals
             individual = self.crossover.crossover(parents[0], parents[1])
             # Mutates the new individual genes
-            individual.chromosome = self.problem.mutation.mutate(individual)
+            individual.chromosome = self.mutation.mutate(individual)
 
             # Calculate fitness for the new individual
             individual.set_fitness(self.problem)

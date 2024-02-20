@@ -1,27 +1,18 @@
-import numpy as np
 
 
-# ---------------------------------------------------------------------------------------------------
 class Gene:
 
     def __init__(
         self,
-        low_boundry: float,
-        high_boundry: float,
-        value = None
+        value: any,
+        low_boundry: any = None,
+        high_boundry: any = None
     ):
 
         self.low_boundry = low_boundry
         self.high_boundry = high_boundry
+        self.value = value
 
-        if value is not None:
-            self.value = value
-        else:
-            self.value = self.generate_gene()
-
-    def generate_gene(self):
-
-        return np.random.uniform(self.low_boundry, self.high_boundry)
 
     def get_value(self):
 
@@ -47,5 +38,3 @@ class Gene:
             return NotImplemented
         return self.value == other.value
 
-
-# ---------------------------------------------------------------------------------------------------

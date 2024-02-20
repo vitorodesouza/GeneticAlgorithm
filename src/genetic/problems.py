@@ -1,16 +1,46 @@
+# Import to ignore typing annotations
+from __future__ import annotations
+from abc import ABC, abstractmethod
 import numpy as np
-from .chromosome import Chromosome
-from .base import Problem
 
+#from .population import Population
+from .chromosome import Chromosome
+from .problems_types import ProblemDataType, ProblemType
+
+
+class Problem(ABC):
+
+    problem_type: ProblemType = None # Needs to be defined for each problem
+    problem_data_type: ProblemDataType = None # Needs to be defined for each problem
+    problem_description: str = None # Needs to be defined for each problem
+
+    @abstractmethod
+    def __init__(
+        self,
+        genes_boundaries: tuple = None,
+        initial_state: Population = None,
+    ):
+
+        self.genes_boundaries = genes_boundaries
+        self.initial_state = initial_state
+        super().__init__()
+
+    @abstractmethod
+    def calculate_fitness(self, chromossome: Chromosome, *args, **kwargs):
+
+        raise NotImplementedError("Subclass must implement the mutate method.")
 
 
 class AckleyProblem(Problem):
 
-    def __init__(self, genes_boundries: tuple, mutation=None, initial_state=None):
-        # self.genes_boundries = genes_boundries
+    problem_type: ProblemType = ProblemType.MAXIMIZE
+    problem_data_type: ProblemDataType = ProblemDataType.REAL
+    problem_description: str = "Maximize the value for Ackley's function" 
+
+    def __init__(self, genes_boundaries: tuple, initial_state=None):
+        # self.genes_boundaries = genes_boundaries
         super().__init__(
-            genes_boundries=genes_boundries,
-            mutation=mutation,
+            genes_boundaries=genes_boundaries,
             initial_state=initial_state,
         )
 
@@ -27,13 +57,19 @@ class AckleyProblem(Problem):
 
 class MaxZero(Problem):
 
-    def __init__(self, genes_boundries: tuple, mutation=None, initial_state=None):
-        # self.genes_boundries = genes_boundries
+    problem_type: ProblemType = ProblemType.MAXIMIZE
+    problem_data_type: ProblemDataType = ProblemDataType.BINARY
+    problem_description: str = "Maximize the number of zeros" 
+
+    def __init__(self, genes_boundaries: tuple, initial_state=None):
+        # self.genes_boundaries = genes_boundaries
         super().__init__(
-            genes_boundries=genes_boundries,
-            mutation=mutation,
-            initial_state=initial_state,
+            genes_boundaries=genes_boundaries,
+            initial_state=initial_state
         )
+
+        self.problem_type = 'max'
+        self.problem_data_type = 'discrete'
 
     def calculate_fitness(self, chromosome: Chromosome, *args, **kwargs):
         genes = chromosome.get_genes()

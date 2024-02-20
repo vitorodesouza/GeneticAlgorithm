@@ -12,7 +12,7 @@ if __name__ == "__main__":
     generations = 400
     crossover_rate = 1
     problem = AckleyProblem(
-        genes_boundries=[(-5, 5), (-5, 5)], mutation=UniformMutation(mutation_rate=1,mutation_value=0.15)
+        genes_boundaries=[(-5, 5), (-5, 5)], mutation=UniformMutation(mutation_rate=1,mutation_value=0.15)
     )
 
     ga = Genetic(

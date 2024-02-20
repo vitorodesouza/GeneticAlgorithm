@@ -1,12 +1,26 @@
+from abc import ABC, abstractmethod
+from statistics import mean
+import numpy as np
+
 from .individual import Individual
 from .chromosome import Chromosome
 from .gene import Gene
-from statistics import mean
-import numpy as np
-from .base import Crossover
+
+class Crossover(ABC):
+
+    @abstractmethod
+    def __init__(self):
+        pass
+
+    @abstractmethod
+    def crossover(
+        self, parent1: Individual, parent2: Individual, *args, **kwargs
+    ) -> Individual:
+
+        raise NotImplementedError("Subclass must implement the mutate method.")
+    
 
 
-# ---------------------------------------------------------------------------------------------------
 class SinglePointCrossover(Crossover):
 
     def __init__(self):

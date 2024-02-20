@@ -1,10 +1,21 @@
 from abc import ABC, abstractmethod
 from .population import Population
 from .individual import Individual
-from .base import Selection
 import numpy as np
 
 
+class Selection(ABC):
+
+    @abstractmethod
+    def __init__(self):
+        pass
+
+    @abstractmethod
+    def select(
+        self, population: Population, num_select: int, *args, **kwargs
+    ) -> list[Individual]:
+        raise NotImplementedError("Subclass must implement the mutate method.")
+    
 
 class TournamentSelection(Selection):
     def __init__(self, tournament_size):

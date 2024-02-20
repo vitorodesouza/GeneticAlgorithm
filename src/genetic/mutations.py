@@ -1,7 +1,28 @@
+from abc import ABC, abstractmethod
+import numpy as np
+
 from .individual import Individual
 from .gene import Gene
-from .base import Mutation
-import numpy as np
+
+
+class Mutation(ABC):
+
+    @abstractmethod
+    def __init__(self, mutation_rate):
+        self.mutation_rate = mutation_rate 
+
+    @abstractmethod
+    def mutate(
+        self,
+        value: any,
+        high_boundry: any,
+        low_boundry: any,
+        *args,
+        **kwargs
+    ):
+
+        raise NotImplementedError("Subclass must implement the mutate method.")
+    
 
 
 class UniformMutation(Mutation):
@@ -41,4 +62,3 @@ class UniformMutation(Mutation):
         return new_value
 
 
-# ---------------------------------------------------------------------------------------------------
