@@ -17,9 +17,11 @@ class Individual:
 
         return self.chromosome
 
+    
     def set_fitness(self, problema: Problem) -> None:
 
-        self.fitness = problema.calculate_fitness(self.chromosome)
+        if self.fitness is None:
+            self.fitness = problema.calculate_fitness(self.chromosome)
 
     def get_fitness(self) -> float:
 
