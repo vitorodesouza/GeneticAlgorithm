@@ -9,13 +9,11 @@ if __name__ == "__main__":
 
     ga = Genetic(
         population_size=10,
-        mutation_rate=1,
         generations=400,
-        crossover_rate=1,
         problem=AckleyProblem(genes_boundaries=[(-5, 5), (-5, 5)]),
-        crossover=ArithimeticCrossover(),
+        crossover=ArithimeticCrossover(crossover_rate=1),
         selection=RouletteSelection(),
-        mutation = UniformMutation(mutation_rate=1, mutation_value=0.15),
+        mutation=UniformMutation(mutation_rate=1, mutation_value=0.15),
         verbose=1,
     )
 

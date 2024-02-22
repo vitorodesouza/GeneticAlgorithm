@@ -1,5 +1,6 @@
 from enum import Enum, auto
 
+
 class ProblemType(Enum):
     MINIMIZE = auto()
     MAXIMIZE = auto()
@@ -17,7 +18,7 @@ class ProblemType(Enum):
             ProblemType.MULTI_OBJECTIVE: "Optimize multiple objectives simultaneously, often involving trade-offs.",
             ProblemType.STOCHASTIC: "Optimize expected outcomes considering randomness or uncertainty.",
             ProblemType.DYNAMIC: "Optimize problems where the objective function, constraints, or both change over time.",
-            ProblemType.COMBINATORIAL: "Find the best combination or sequence from a discrete set of elements."
+            ProblemType.COMBINATORIAL: "Find the best combination or sequence from a discrete set of elements.",
         }
         return descriptions.get(self, "Unknown optimization type.")
 

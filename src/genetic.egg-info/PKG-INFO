@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: genetic
-Version: 0.2.0
+Version: 0.1.2
 Summary: A Python package for genetic algorithms.
 Author-email: Vitor Oliveira de Souza <vitor.odesouza@gmail.com.com>
 Maintainer-email: Vitor Oliveira de Souza <vitor.odesouza@gmail.com.com>
@@ -17,6 +17,7 @@ License-File: LICENCE.txt
 Requires-Dist: numpy<2.0.0,>=1.26.4
 Requires-Dist: pandas<3.0.0,>=2.2.0
 Requires-Dist: matplotlib<4.0.0,>=3.8.0
+Requires-Dist: tqdm<5.0.0,>=4.0.0
 Provides-Extra: dev
 Requires-Dist: black; extra == "dev"
 

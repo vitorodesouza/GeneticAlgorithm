@@ -5,13 +5,14 @@ from .problems import Problem
 from .selections import Selection
 from .population_generator import PopulationGenerator
 
+from tqdm import tqdm
+
 
 class Genetic:
 
     def __init__(
         self,
         population_size: int,
-        crossover_rate: float,
         generations: int,
         crossover,
         problem,
@@ -31,8 +32,6 @@ class Genetic:
 
         # Number of individuals in a population
         self.population_size = population_size
-        # Probability of crossover between two individuals
-        self.crossover_rate = crossover_rate
         # Number of generations to run the algorithm
         self.generations = generations
 
@@ -67,7 +66,9 @@ class Genetic:
                 # Use provided population generator
                 if self.verbose > 0:
                     print("Generating first population")
-                self.population = p_generator.generate(population_size=self.population_size)
+                self.population = p_generator.generate(
+                    population_size=self.population_size
+                )
             else:
                 # Use standard pop generator
                 if self.verbose > 0:
@@ -78,16 +79,13 @@ class Genetic:
 
         if verbose > 0:
             print("Genetic algorithm initialized")
-        if verbose > 0:
+        if verbose > 1:
             print("First population: ", self.population.individuals)
 
     def run(self):
 
         best_individuals_history = []
-        for i in range(self.generations):
-
-            if self.verbose > 0:
-                print("Generation: ", i)
+        for i in tqdm(range(self.generations), desc="Evolving Generations", ncols=100):
 
             # Calculate fitness values for each individual
             for individual in self.population.get_individuals():

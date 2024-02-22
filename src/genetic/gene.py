@@ -1,18 +1,10 @@
-
-
 class Gene:
 
-    def __init__(
-        self,
-        value: any,
-        low_boundry: any = None,
-        high_boundry: any = None
-    ):
+    def __init__(self, value: any, low_boundry: any = None, high_boundry: any = None):
 
         self.low_boundry = low_boundry
         self.high_boundry = high_boundry
         self.value = value
-
 
     def get_value(self):
 
@@ -37,4 +29,3 @@ class Gene:
         if not isinstance(other, Gene):
             return NotImplemented
         return self.value == other.value
-

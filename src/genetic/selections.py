@@ -15,7 +15,7 @@ class Selection(ABC):
         self, population: Population, num_select: int, *args, **kwargs
     ) -> list[Individual]:
         raise NotImplementedError("Subclass must implement the mutate method.")
-    
+
 
 class TournamentSelection(Selection):
     def __init__(self, tournament_size):
@@ -23,11 +23,13 @@ class TournamentSelection(Selection):
 
     # TODO
 
+
 class RankSelection(Selection):
     def __init__(self):
         pass
 
     # TODO
+
 
 class RandomSelection(Selection):
     def __init__(self):
@@ -46,6 +48,7 @@ class RandomSelection(Selection):
                 ]
             )
         return selected_individuals
+
 
 class RouletteSelection(Selection):
 
@@ -95,5 +98,6 @@ class RouletteSelection(Selection):
                     ]
                 )
 
-        return selected_individuals#[selected_individuals[i] for i in range(num_select)]
-
+        return (
+            selected_individuals  # [selected_individuals[i] for i in range(num_select)]
+        )

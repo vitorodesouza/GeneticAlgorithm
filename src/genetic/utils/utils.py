@@ -1,6 +1,7 @@
 from matplotlib import pyplot as plt
 from genetic.individual import Individual
 
+
 def plot_history(history: list[Individual]) -> None:
     plt.plot([i.fitness for i in history])
     plt.ylabel("Fitness")
