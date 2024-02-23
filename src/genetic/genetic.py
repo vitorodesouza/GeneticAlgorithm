@@ -96,6 +96,8 @@ class Genetic:
             new_population = self.create_next_generation(self.population)
             # Set new population as current population
             self.population = new_population
+            # Update mutation rate in case of dynamic mutation classes
+            self.mutation.update_mutation_rate()
         # Return the history of best individuals and the best individual of currrent population
         return best_individuals_history, self.population.get_best_individual()
 

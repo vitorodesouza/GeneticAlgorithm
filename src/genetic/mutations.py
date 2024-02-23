@@ -15,6 +15,13 @@ class Mutation(ABC):
     def mutate(self, value: any, high_boundry: any, low_boundry: any, *args, **kwargs):
 
         raise NotImplementedError("Subclass must implement the mutate method.")
+    
+    def update_mutation_rate(self):
+        """
+        This method is called after every generation to update the mutation rate.
+        Only override this method if you want a dynamic mutation rate.
+        """
+        pass
 
 
 class UniformMutation(Mutation):
