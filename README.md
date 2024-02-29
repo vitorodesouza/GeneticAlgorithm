@@ -16,7 +16,9 @@ This section provides a detailed example of how to use the Genetic Algorithm Fra
 ### Maximizing Ackley's Function
 Ackley's function is a well-known complex mathematical function used for testing optimization algorithms. In this example, we use the genetic algorithm framework to find the maximum value of Ackley's function.
 
-![Ackley function of two variablest](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Ackley_2d.png/450px-Ackley_2d.png)
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Ackley_2d.png/450px-Ackley_2d.png" alt="Ackley function of two variablest"/>
+</p>
 
 1. Starting the Algorithm: To begin, you can use the following command to start the genetic algorithm process. This command executes the __main__.py file in the genetic algorithm framework package, which is set up to tackle Ackley's problem:
 
@@ -31,8 +33,6 @@ This command initializes the genetic algorithm with default parameters and targe
 3. Observing the Evolution: As the genetic algorithm runs, it prints the best fitness value found in each generation to the console, allowing you to observe the algorithm's progress in real-time. The goal is to see improvement in the fitness values as the algorithm evolves.
 
 4. Graphical Representation: Upon completion, the framework generates a graph using Matplotlib that visualizes the algorithm's performance over generations. This graph shows how the best fitness value in the population improves over time, providing a clear visual representation of the algorithm's optimization process.
-
-![Ackley Function Fitness Evolution](doc/ackley_optimization.png)
 
 <p align="center">
   <img src="doc/ackley_optimization.png" alt="Optimization Process"/>
