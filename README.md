@@ -32,7 +32,11 @@ This command initializes the genetic algorithm with default parameters and targe
 
 4. Graphical Representation: Upon completion, the framework generates a graph using Matplotlib that visualizes the algorithm's performance over generations. This graph shows how the best fitness value in the population improves over time, providing a clear visual representation of the algorithm's optimization process.
 
-![Ackley Function Fitness Evolution](.\doc\ackley_optimization.png)
+![Ackley Function Fitness Evolution](doc/ackley_optimization.png)
+
+<p align="center">
+  <img src="doc/ackley_optimization.png" alt="Optimization Process"/>
+</p>
 
 5. Interpreting the Results: The final output includes the best solution found for maximizing Ackley's function along with its fitness value. By analyzing the generated graph and the output data, you can assess the effectiveness of the genetic algorithm in solving the optimization problem.
 
