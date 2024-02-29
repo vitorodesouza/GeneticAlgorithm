@@ -18,17 +18,23 @@ This project presents a versatile Python-based genetic algorithm framework desig
 ## Installation
 Clone this repository to your local machine:
 
-``` bash git clone https://github.com/vitorodesouza/GeneticAlgorithm ```
+```bash 
+git clone https://github.com/vitorodesouza/GeneticAlgorithm
+```
 
 Navigate to the cloned directory and install the required packages:
 
-``` bash cd GeneticAlgorithm ```
-``` pip install -r requirements.txt ```
+```bash 
+cd GeneticAlgorithm
+pip install -r requirements.txt 
+```
 
 Usage
 To run the genetic algorithm with default settings on the Ackley problem, execute:
 
-``` python python -m genetic ```
+```bash 
+python -m genetic 
+```
 
 Feel free to test different optimization challenges, experiment with various genetic operators, and fine-tune the algorithm parameters according to your needs.
 
