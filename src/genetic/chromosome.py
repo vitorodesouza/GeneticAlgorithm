@@ -16,7 +16,9 @@ class Chromosome:
         self.genes = genes
 
     def get_gene(self, index: int) -> Gene:
-
+        """
+        Get a specific gene by its index.
+        """
         return self.genes[index]
 
     def set_gene(self, index: int, gene: Gene) -> None:
