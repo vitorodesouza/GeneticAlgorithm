@@ -4,7 +4,9 @@ from .gene import Gene
 class Chromosome:
 
     def __init__(self, genes: list[Gene] = None) -> None:
-
+        """
+            Comentario aleatorio
+        """
         self.genes = genes
 
     def get_genes(self) -> list[Gene]:
